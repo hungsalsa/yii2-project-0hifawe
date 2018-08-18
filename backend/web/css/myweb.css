@@ -1,0 +1,20 @@
+.toggler {
+    /*height: 50px;*/
+    display: none;
+  }
+  .clickbutton{
+  	cursor: pointer;
+ }
+ .clickbutton li{
+ 	list-style: none;
+ 	padding: 10px 3px;
+ 	transition: 0.6s;
+ }
+ .clickbutton li:hover{
+ 	background: rgba(255, 255, 255, 0.23);
+ 	border-radius: 10px;
+ }
+.toggler li:hover a {
+    background: none !important;
+}
+ 
