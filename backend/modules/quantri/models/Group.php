@@ -55,18 +55,4 @@ class Group extends \yii\db\ActiveRecord
         return Group::find()->where(['status' => 1])->orderBy('groupsName')->all();
     }
 
-    public static function dropdown()
-    {
-        // get and cache data
-        static $dropdown;
-        if ($dropdown === null) {
-            // get all records from database and generate
-            $models = static::find()->all();
-            foreach ($models as $value) {
-                $dropdown[$value->id] = $value->groupsName;
-            }
-        }
-
-        return $dropdown;
-    }
 }

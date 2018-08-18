@@ -17,41 +17,39 @@ use backend\modules\quantri\models\Categories;
     <?= $form->field($model, 'cateName')->textInput(['maxlength' => true]) ?>
 
     <?php // $form->field($model, 'groupId')->dropDownlist($dataGroups,['prompt'=>'-Chọn danh mục']) ?>
-<?php 
-// Normal select with ActiveForm & model
-echo $form->field($model, 'groupId')->widget(Select2::classname(), [
-    'data' => $dataGroups,
-    'language' => 'en',
-    'options' => ['placeholder' => 'Select a Groups ...',
-    'onchange'=>'
-        $.post("'.Yii::$app->homeUrl.'quantri/categories/lists?id='.'"+$(this).val(),function(data){
-            $("select#categories-parent_id").html( data );
-        });'
-],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    
-]);
-     ?>
-    
 
-         <?php 
-// Normal select with ActiveForm & model
-echo $form->field($model, 'parent_id')->widget(Select2::classname(), [
-    'data' => Categories::dropdown(),
-    'language' => 'en',
-    'options' => ['placeholder' => 'Select a Groups ...',
-    // 'onchange'=>'
-    //     $.post("'.Yii::$app->homeUrl.'quantri/categories/lists?id='.'"+$(this).val(),function(){
-    //         $("select#categories-parent_id").html( data );
-    //     });'
-],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
-    
-]);
+    <?= 
+        // Normal select with ActiveForm & model
+        $form->field($model, 'groupId')->widget(Select2::classname(), [
+            'data' => $dataGroups,
+            'language' => 'en',
+            'options' => ['placeholder' => 'Select a Groups ...',
+            'onchange'=>'
+                $.post("'.Yii::$app->homeUrl.'quantri/categories/lists?id='.'"+$(this).val(),function(data){
+                    $("select#categories-parent_id").html( data );
+                });'
+        ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+            
+        ]);
+    ?>
+    <?=
+        // Normal select with ActiveForm & model
+        $form->field($model, 'parent_id')->widget(Select2::classname(), [
+            'data' => $dataGroups,
+            'language' => 'en',
+            'options' => ['placeholder' => 'Select a Groups ...',
+            // 'onchange'=>'
+            //     $.post("'.Yii::$app->homeUrl.'quantri/categories/lists?id='.'"+$(this).val(),function(){
+            //         $("select#categories-parent_id").html( data );
+            //     });'
+            ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]);
      ?>
 
     <?php // $form->field($model, 'parent_id')->dropDownlist($datacat,['prompt'=>'-Chọn danh mục']) ?>

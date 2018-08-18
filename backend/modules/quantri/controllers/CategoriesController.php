@@ -109,14 +109,8 @@ class CategoriesController extends Controller
 
         $categories = Categories::find()
                 ->where(['groupId'=>$id])
-                // ->orderBy(['catName'=>'SORT_DESC'])
-                ->orderBy([
-                    'cateName'=>SORT_ASC
-                ])
+                ->orderBy(['cateName'=>SORT_ASC])
                 ->all();
-                //  $categories = ArrayHelper::map(Categories::find()
-                // ->where(['groupId'=>$id])
-                // ->all(),'id','cateName');
 
         if ($countCategory > 0 ) {
             foreach ($categories as $result) {
@@ -128,31 +122,7 @@ class CategoriesController extends Controller
     }
 
 
-     public function actionListcategories($id)
-    {
-        $countCategory = Categories::find()
-                ->where(['groupId'=>$id])
-                ->count();
-
-        $categories = Categories::find()
-                ->where(['groupId'=>$id])
-                // ->orderBy(['catName'=>'SORT_DESC'])
-                ->orderBy([
-                    'cateName'=>SORT_ASC
-                ])
-                ->all();
-                //  $categories = ArrayHelper::map(Categories::find()
-                // ->where(['groupId'=>$id])
-                // ->all(),'id','cateName');
-
-        if ($countCategory > 0 ) {
-            foreach ($categories as $result) {
-                echo "<option value='".$result->id."'>".$result->cateName."</option>";
-            }
-        }else {
-            echo '<option> - </option>';
-        } 
-    }
+     
 
     /**
      * Updates an existing Categories model.

@@ -69,20 +69,6 @@ class Categories extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function dropdown()
-    {
-        // get and cache data
-        static $dropdown;
-        if ($dropdown === null) {
-            // get all records from database and generate
-            $models = static::find()->all();
-            foreach ($models as $value) {
-                $dropdown[$value->id] = $value->cateName;
-            }
-        }
-
-        return $dropdown;
-    }
 
     public $data;
     public function getCategoryParent($parent = 0, $level =""){
